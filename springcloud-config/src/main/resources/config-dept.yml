@@ -1,0 +1,137 @@
+spring:
+  profiles:
+    active: dev
+
+
+---
+
+server:
+  port: 8001
+
+#mybatis配置
+mybatis:
+  type-aliases-package: com.xiyao.springcloud.pojo
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  config-location: classpath:mybatis/mybatis-config.xml
+
+
+#spring配置
+spring:
+  profiles: dev
+  application:
+    name: springcloud-config-dept-dev
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://192.168.11.246:3306/springcloud_01?useUnicode=true&serverTimezone=GMT%2B8&characterEncoding=UTF-8&useSSL=false
+    username: readonly
+    password: Readonly246
+    driver-class-name: org.gjt.mm.mysql.Driver
+    #      driver-class-name: com.mysql.jdbc.Driver
+  #以下为新增
+  druid:
+    # 指明是否在从池中取出连接前进行检验,如果检验失败, 则从池中去除连接并尝试取出另一个，
+    #注意: 设置为true后如果要生效,validationQuery参数必须设置为非空字符串
+    test-on-borrow: false
+    # 指明连接是否被空闲连接回收器(如果有)进行检验.如果检测失败,则连接将被从池中去除.
+    #注意: 设置为true后如果要生效,validationQuery参数必须设置为非空字符串
+    test-while-idle: true
+    # 指明是否在归还到池中前进行检验，注意: 设置为true后如果要生效,
+    #validationQuery参数必须设置为非空字符串
+    test-on-return: false
+    # SQL查询,用来验证从连接池取出的连接,在将连接返回给调用者之前.
+    #如果指定,则查询必须是一个SQL SELECT并且必须返回至少一行记录
+    validation-query: select 1
+
+#Eureka配置
+eureka:
+  client:
+    service-url:
+      #defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+      defaultZone: http://eureka7003.com:7003/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7001.com:7001/eureka/
+  instance:
+    instance-id: springcloud-provider-dept8001
+    prefer-ip-address: true #显示真实ip
+  #需要将我的服务注册到eureka上
+    #register-with-eureka: true
+    #需要检索服务
+    #fetch-registry: true
+
+  #instance:
+    #instance-id: Provider-dept-8001
+    #Eureka客户端向服务端发送心跳包的时间间隔，单位:秒(客户端告诉服务端自己按时该规则)
+    #lease-expiration-duration-in-seconds: 2
+    #Eureka服务在收到最后一次心跳后，等待2稍，超过2稍，则剔除该
+    #lease-renewal-interval-in-seconds: 1
+
+
+info:
+  app.name: xiyao-springcloud
+  company.name: blog.xiyao.com
+
+
+
+---
+
+server:
+  port: 8001
+
+#mybatis配置
+mybatis:
+  type-aliases-package: com.xiyao.springcloud.pojo
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  config-location: classpath:mybatis/mybatis-config.xml
+
+
+#spring配置
+spring:
+  profiles: test
+  application:
+    name: springcloud-config-dept-test
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://192.168.11.246:3306/springcloud_02?useUnicode=true&serverTimezone=GMT%2B8&characterEncoding=UTF-8&useSSL=false
+    username: readonly
+    password: Readonly246
+    driver-class-name: org.gjt.mm.mysql.Driver
+    #      driver-class-name: com.mysql.jdbc.Driver
+  #以下为新增
+  druid:
+    # 指明是否在从池中取出连接前进行检验,如果检验失败, 则从池中去除连接并尝试取出另一个，
+    #注意: 设置为true后如果要生效,validationQuery参数必须设置为非空字符串
+    test-on-borrow: false
+    # 指明连接是否被空闲连接回收器(如果有)进行检验.如果检测失败,则连接将被从池中去除.
+    #注意: 设置为true后如果要生效,validationQuery参数必须设置为非空字符串
+    test-while-idle: true
+    # 指明是否在归还到池中前进行检验，注意: 设置为true后如果要生效,
+    #validationQuery参数必须设置为非空字符串
+    test-on-return: false
+    # SQL查询,用来验证从连接池取出的连接,在将连接返回给调用者之前.
+    #如果指定,则查询必须是一个SQL SELECT并且必须返回至少一行记录
+    validation-query: select 1
+
+#Eureka配置
+eureka:
+  client:
+    service-url:
+      #defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+      defaultZone: http://eureka7003.com:7003/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7001.com:7001/eureka/
+  instance:
+    instance-id: springcloud-provider-dept8001
+    prefer-ip-address: true #显示真实ip
+  #需要将我的服务注册到eureka上
+    #register-with-eureka: true
+    #需要检索服务
+    #fetch-registry: true
+
+  #instance:
+    #instance-id: Provider-dept-8001
+    #Eureka客户端向服务端发送心跳包的时间间隔，单位:秒(客户端告诉服务端自己按时该规则)
+    #lease-expiration-duration-in-seconds: 2
+    #Eureka服务在收到最后一次心跳后，等待2稍，超过2稍，则剔除该
+    #lease-renewal-interval-in-seconds: 1
+
+
+info:
+  app.name: xiyao-springcloud
+  company.name: blog.xiyao.com
+

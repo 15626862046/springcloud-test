@@ -1,0 +1,9 @@
+
+#请将电脑hosts文件里添加如下配置
+#C:\Windows\System32\drivers\etc
+
+
+127.0.0.1 eureka7001.com
+127.0.0.1 eureka7002.com
+127.0.0.1 eureka7003.com
+127.0.0.1 www.xiyao.com

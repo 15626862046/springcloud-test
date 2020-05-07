@@ -1,0 +1,28 @@
+spring:
+  profiles:
+    active: dev
+    
+---
+spring:
+  profiles: dev
+  application:
+    name: springcloud-config-dev
+server:
+  port: 8201
+
+
+---    
+spring:
+  profiles: test
+  application:
+    name: springcloud-config-test
+server:
+  port: 8202
+    
+    
+
+
+
+
+
+    

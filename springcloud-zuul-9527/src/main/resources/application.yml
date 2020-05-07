@@ -1,0 +1,25 @@
+server:
+  port: 9527
+
+spring:
+  application:
+    name: springcloud-zuul
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7003.com:7003/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7001.com:7001/eureka/
+  instance:
+    instance-id: zuul9527.com
+    prefer-ip-address: true #隐藏真实ip地址
+
+info:
+  app.name: jun-springcloud
+  comapny.name: www.jun.com
+
+zuul:
+  routes:
+    mydept.serviceId: springcloud-provider-dept
+    mydept.path: /mydept/**
+  ignored-services: "*" #不能再使用"springcloud-provider-dept"访问了
+  prefix: /jun #设置公共前缀
